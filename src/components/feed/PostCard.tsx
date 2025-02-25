@@ -64,7 +64,7 @@ const PostCard = ({
 
   return (
     <>
-      <Card className="w-full max-w-[700px] p-4 mb-4 bg-white">
+      <Card className="w-full max-w-[700px] p-4 mb-4 bg-card">
         <div className="flex items-start justify-between">
           <div className="flex items-center gap-3 group cursor-pointer">
             <Avatar className="h-10 w-10 transition-transform group-hover:scale-105">
@@ -72,10 +72,10 @@ const PostCard = ({
               <AvatarFallback>{username[0]}</AvatarFallback>
             </Avatar>
             <div>
-              <h3 className="font-semibold text-sm group-hover:text-emerald-800 transition-colors">
+              <h3 className="font-semibold text-sm group-hover:text-primary transition-colors">
                 {username}
               </h3>
-              <p className="text-sm text-gray-500 group-hover:text-emerald-600 transition-colors">
+              <p className="text-sm text-muted-foreground group-hover:text-primary/80 transition-colors">
                 {handle}
               </p>
             </div>
@@ -93,13 +93,13 @@ const PostCard = ({
           </DropdownMenu>
         </div>
 
-        <div className="mt-4 text-gray-700">
+        <div className="mt-4 text-card-foreground">
           <p className="whitespace-pre-wrap">{displayContent}</p>
           {shouldTruncate && (
             <Button
               variant="link"
               onClick={() => setIsExpanded(!isExpanded)}
-              className="mt-2 p-0 h-auto text-emerald-800 hover:text-emerald-700"
+              className="mt-2 p-0 h-auto text-primary hover:text-primary/80"
             >
               {isExpanded ? "See less" : "See more"}
             </Button>
@@ -112,7 +112,7 @@ const PostCard = ({
             size="sm"
             onClick={handleLike}
             disabled={isLikeLoading}
-            className={`flex items-center gap-2 transition-colors ${isLiked ? "text-rose-600 hover:text-rose-500" : "hover:text-rose-600 hover:bg-rose-50"}`}
+            className={`flex items-center gap-2 transition-colors ${isLiked ? "text-rose-600 hover:text-rose-500" : "hover:text-rose-600 hover:bg-rose-50/50"}`}
           >
             <Heart
               className={`h-5 w-5 transition-transform ${isLiked ? "fill-current scale-110" : ""} ${isLikeLoading ? "animate-pulse" : ""}`}
@@ -123,7 +123,7 @@ const PostCard = ({
             variant="ghost"
             size="sm"
             onClick={() => setIsCommentModalOpen(true)}
-            className="flex items-center gap-2 hover:text-emerald-600 hover:bg-emerald-50 transition-colors"
+            className="flex items-center gap-2 hover:text-primary hover:bg-primary/10 transition-colors"
           >
             <MessageCircle className="h-5 w-5" />
             <span className="font-medium">{comments}</span>
@@ -131,7 +131,7 @@ const PostCard = ({
           <Button
             variant="ghost"
             size="sm"
-            className="flex items-center gap-2 hover:text-blue-600 hover:bg-blue-50 transition-colors"
+            className="flex items-center gap-2 hover:text-primary hover:bg-primary/10 transition-colors"
           >
             <Share2 className="h-5 w-5" />
             <span className="font-medium">{shares}</span>

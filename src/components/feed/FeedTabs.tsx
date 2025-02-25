@@ -11,7 +11,7 @@ const FeedTabs = ({
   onTabChange = () => {},
 }: FeedTabsProps) => {
   return (
-    <div className="w-full bg-white border-b">
+    <div className="w-full bg-card border-b border-border">
       <Tabs
         defaultValue={activeTab}
         onValueChange={onTabChange}
@@ -20,13 +20,13 @@ const FeedTabs = ({
         <TabsList className="w-full grid grid-cols-2">
           <TabsTrigger
             value="for-you"
-            className="data-[state=active]:text-emerald-800 data-[state=active]:border-b-2 data-[state=active]:border-emerald-800"
+            className="data-[state=active]:text-primary data-[state=active]:border-b-2 data-[state=active]:border-primary"
           >
             For You
           </TabsTrigger>
           <TabsTrigger
             value="following"
-            className="data-[state=active]:text-emerald-800 data-[state=active]:border-b-2 data-[state=active]:border-emerald-800"
+            className="data-[state=active]:text-primary data-[state=active]:border-b-2 data-[state=active]:border-primary"
           >
             Following
           </TabsTrigger>

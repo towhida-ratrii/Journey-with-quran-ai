@@ -8,7 +8,7 @@ const ContentArea = () => {
   const [activeTab, setActiveTab] = useState("for-you");
 
   return (
-    <ScrollArea className="flex-1">
+    <ScrollArea className="flex-1 bg-background">
       <div className="max-w-[700px] mx-auto px-4">
         <div className="py-4">
           <PostCreator />

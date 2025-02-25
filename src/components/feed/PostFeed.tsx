@@ -26,7 +26,7 @@ const PostFeed = ({
   const displayPosts = feedType === "following" ? followingPosts : defaultPosts;
 
   return (
-    <ScrollArea className="h-full w-full bg-gray-50">
+    <ScrollArea className="h-full w-full bg-background">
       <div className="flex flex-col items-center gap-4 p-4">
         {displayPosts.map((post) => (
           <PostCard
@@ -109,8 +109,8 @@ Remember: Tajweed isn't just about rules—it's about preserving the beauty and 
   },
   {
     id: "3",
-    username: "Omar Malik",
-    avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=Omar",
+    username: "Omar Hasan",
+    avatarUrl: "https://api.dicebear.com/9.x/micah/svg?seed=Aiden",
     timestamp: "6 hours ago",
     content:
       "Started a new study circle for Tajweed basics. If anyone's interested in joining, we meet every Sunday after Maghrib prayer. Let's perfect our recitation together! 📚",

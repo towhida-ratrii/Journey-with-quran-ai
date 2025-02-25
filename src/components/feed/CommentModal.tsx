@@ -71,12 +71,12 @@ const CommentModal = ({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-[500px] h-[600px] flex flex-col p-0 gap-0 bg-gray-50">
-        <DialogHeader className="p-6 pb-4 bg-white border-b">
-          <DialogTitle className="text-xl font-semibold text-emerald-800">
+      <DialogContent className="max-w-[500px] h-[600px] flex flex-col p-0 gap-0 bg-background">
+        <DialogHeader className="p-6 pb-4 bg-card border-b border-border">
+          <DialogTitle className="text-xl font-semibold text-primary">
             Comments
           </DialogTitle>
-          <DialogDescription className="text-sm text-gray-500">
+          <DialogDescription className="text-sm text-muted-foreground">
             Join the discussion and share your thoughts
           </DialogDescription>
         </DialogHeader>
@@ -90,28 +90,30 @@ const CommentModal = ({
                   <AvatarFallback>{comment.username[0]}</AvatarFallback>
                 </Avatar>
                 <div className="flex-1 space-y-1">
-                  <div className="bg-white rounded-2xl p-3 shadow-sm">
+                  <div className="bg-card rounded-2xl p-3 shadow-sm">
                     <div className="flex items-center gap-2">
-                      <p className="font-semibold text-sm hover:text-emerald-800 cursor-pointer transition-colors">
+                      <p className="font-semibold text-sm hover:text-primary cursor-pointer transition-colors">
                         {comment.username}
                       </p>
-                      <span className="text-xs text-gray-500">
+                      <span className="text-xs text-muted-foreground">
                         {comment.timestamp}
                       </span>
                     </div>
-                    <p className="text-sm mt-1">{comment.content}</p>
+                    <p className="text-sm mt-1 text-card-foreground">
+                      {comment.content}
+                    </p>
                   </div>
                   <div className="flex items-center gap-4 px-3">
                     <button
                       onClick={() => handleLikeComment(comment.id)}
-                      className={`flex items-center gap-1 text-xs transition-colors ${likedComments[comment.id] ? "text-rose-600" : "text-gray-500 hover:text-rose-600"}`}
+                      className={`flex items-center gap-1 text-xs transition-colors ${likedComments[comment.id] ? "text-rose-600" : "text-muted-foreground hover:text-rose-600"}`}
                     >
                       <Heart
                         className={`h-4 w-4 ${likedComments[comment.id] ? "fill-current" : ""}`}
                       />
                       <span>{commentLikes[comment.id] || 0}</span>
                     </button>
-                    <button className="text-xs text-gray-500 hover:text-emerald-800 transition-colors">
+                    <button className="text-xs text-muted-foreground hover:text-primary transition-colors">
                       Reply
                     </button>
                   </div>
@@ -121,7 +123,7 @@ const CommentModal = ({
           </div>
         </ScrollArea>
 
-        <div className="p-4 bg-white border-t mt-auto">
+        <div className="p-4 bg-card border-t border-border mt-auto">
           <div className="flex gap-2 items-start">
             <Avatar className="h-8 w-8">
               <AvatarImage src="https://api.dicebear.com/7.x/avataaars/svg?seed=current_user" />
@@ -132,12 +134,12 @@ const CommentModal = ({
                 value={newComment}
                 onChange={(e) => setNewComment(e.target.value)}
                 placeholder="Write a comment..."
-                className="flex-1 min-h-[80px] resize-none bg-gray-50"
+                className="flex-1 min-h-[80px] resize-none bg-background"
               />
               <Button
                 onClick={handleSubmitComment}
                 size="icon"
-                className="bg-emerald-800 hover:bg-emerald-700 h-10 w-10"
+                className="bg-primary hover:bg-primary/90 h-10 w-10"
                 disabled={!newComment.trim()}
               >
                 <Send className="h-4 w-4" />

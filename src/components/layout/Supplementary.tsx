@@ -40,92 +40,114 @@ const Supplementary = () => {
   ];
 
   return (
-    <div className="w-full h-full bg-white p-4 space-y-6 overflow-y-scroll">
-      {/* Trending Topics */}
-      <section>
-        <div className="flex items-center gap-2 mb-4">
-          <TrendingUp className="h-5 w-5 text-emerald-800" />
-          <h2 className="font-semibold text-lg">Trending Topics</h2>
-        </div>
-        <div className="space-y-3">
-          {trendingTopics.map((topic) => (
-            <Card
-              key={topic.name}
-              className="p-3 hover:bg-gray-50 transition-colors"
-            >
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <Badge
-                    variant="secondary"
-                    className="text-emerald-800 bg-emerald-50"
+    <div className="w-full h-full bg-card overflow-y-auto">
+      {/* Sticky Header */}
+      <div className="sticky top-0 bg-card/80 backdrop-blur-sm p-4 border-b z-10">
+        <h2 className="text-xl font-semibold text-primary">Discover</h2>
+      </div>
+
+      <div className="p-4 space-y-6">
+        {/* Trending Topics */}
+        <section>
+          <div className="flex items-center gap-2 mb-4">
+            <TrendingUp className="h-5 w-5 text-primary" />
+            <h2 className="font-semibold text-lg text-card-foreground">
+              Trending Topics
+            </h2>
+          </div>
+          <div className="space-y-3">
+            {trendingTopics.map((topic) => (
+              <Card
+                key={topic.name}
+                className="p-3 hover:bg-background/50 transition-colors cursor-pointer group"
+              >
+                <div className="flex flex-col gap-2">
+                  <div className="flex items-center justify-between">
+                    <Badge
+                      variant="secondary"
+                      className="text-primary bg-primary/10 group-hover:bg-primary/20 transition-colors"
+                    >
+                      #{topic.name}
+                    </Badge>
+                    <span className="text-sm text-muted-foreground">
+                      {topic.posts} posts
+                    </span>
+                  </div>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="w-full text-primary border-primary hover:bg-primary/10 transition-all duration-200"
                   >
-                    #{topic.name}
-                  </Badge>
-                  <span className="text-sm text-gray-500">
-                    {topic.posts} posts
-                  </span>
+                    Follow Topic
+                  </Button>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        <Separator className="bg-border" />
+
+        {/* Suggested Users */}
+        <section>
+          <div className="flex items-center gap-2 mb-4">
+            <Users className="h-5 w-5 text-primary" />
+            <h2 className="font-semibold text-lg text-card-foreground">
+              Suggested Scholars
+            </h2>
+          </div>
+          <div className="space-y-4">
+            {suggestedUsers.map((user) => (
+              <Card
+                key={user.name}
+                className="p-3 hover:bg-background/50 transition-colors cursor-pointer group"
+              >
+                <div className="flex items-center gap-3">
+                  <Avatar className="h-10 w-10 ring-2 ring-primary/20 ring-offset-2 ring-offset-background transition-all duration-200 group-hover:ring-primary/40">
+                    <AvatarImage src={user.avatar} alt={user.name} />
+                    <AvatarFallback>{user.name[0]}</AvatarFallback>
+                  </Avatar>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-semibold text-sm text-card-foreground truncate group-hover:text-primary transition-colors">
+                      {user.name}
+                    </h3>
+                    <p className="text-sm text-muted-foreground truncate">
+                      {user.bio}
+                    </p>
+                  </div>
                 </div>
                 <Button
                   variant="outline"
                   size="sm"
-                  className="text-emerald-800 border-emerald-800 hover:bg-emerald-50 transition-all duration-200 hover:scale-105"
+                  className="w-full mt-3 text-primary border-primary hover:bg-primary/10 transition-all duration-200"
                 >
                   Follow
                 </Button>
-              </div>
-            </Card>
-          ))}
-        </div>
-      </section>
+              </Card>
+            ))}
+          </div>
+        </section>
 
-      <Separator />
+        <Separator className="bg-border" />
 
-      {/* Suggested Users */}
-      <section>
-        <div className="flex items-center gap-2 mb-4">
-          <Users className="h-5 w-5 text-emerald-800" />
-          <h2 className="font-semibold text-lg">Suggested Scholars</h2>
-        </div>
-        <div className="space-y-4">
-          {suggestedUsers.map((user) => (
-            <div key={user.name} className="flex items-start gap-3">
-              <Avatar className="h-10 w-10">
-                <AvatarImage src={user.avatar} alt={user.name} />
-                <AvatarFallback>{user.name[0]}</AvatarFallback>
-              </Avatar>
-              <div className="flex-1">
-                <h3 className="font-semibold text-sm">{user.name}</h3>
-                <p className="text-sm text-gray-500">{user.bio}</p>
-              </div>
-              <Button
-                variant="outline"
-                size="sm"
-                className="text-emerald-800 border-emerald-800 hover:bg-emerald-50 transition-all duration-200 hover:scale-105"
-              >
-                Follow
-              </Button>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <Separator />
-
-      {/* Saved Items */}
-      <section>
-        <div className="flex items-center gap-2 mb-4">
-          <Bookmark className="h-5 w-5 text-emerald-800" />
-          <h2 className="font-semibold text-lg">Saved Items</h2>
-        </div>
-        <Card className="p-4 bg-emerald-50 border-emerald-100">
-          <p className="text-sm text-emerald-800">
-            Save posts and topics to access them quickly later
-          </p>
-          <Button className="w-full mt-3 bg-emerald-800 hover:bg-emerald-700">
-            View Saved Items
-          </Button>
-        </Card>
-      </section>
+        {/* Saved Items */}
+        <section>
+          <div className="flex items-center gap-2 mb-4">
+            <Bookmark className="h-5 w-5 text-primary" />
+            <h2 className="font-semibold text-lg text-card-foreground">
+              Saved Items
+            </h2>
+          </div>
+          <Card className="p-4 bg-primary/5 border-primary/20 hover:bg-primary/10 transition-colors cursor-pointer">
+            <p className="text-sm text-primary font-medium">
+              Save posts and topics to access them quickly later
+            </p>
+            <Button className="w-full mt-3 bg-primary hover:bg-primary/90 transition-colors">
+              View Saved Items
+            </Button>
+          </Card>
+        </section>
+      </div>
     </div>
   );
 };

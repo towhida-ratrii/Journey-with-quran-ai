@@ -14,7 +14,7 @@ interface PostCreatorProps {
 
 const PostCreator = ({
   onSubmit = () => {},
-  userAvatar = "https://api.dicebear.com/7.x/avataaars/svg?seed=user",
+  userAvatar = "https://api.dicebear.com/9.x/micah/svg?seed=Luis",
   username = "User",
 }: PostCreatorProps) => {
   const [content, setContent] = useState("");
@@ -28,7 +28,7 @@ const PostCreator = ({
   };
 
   return (
-    <Card className="w-full max-w-[700px] p-4 bg-white">
+    <Card className="w-full max-w-[700px] p-4 bg-card">
       <div className="flex items-start gap-4">
         <Avatar className="h-10 w-10">
           <AvatarImage src={userAvatar} alt={username} />
@@ -51,12 +51,12 @@ const PostCreator = ({
                 placeholder="Share your Quran learning journey..."
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
-                className="min-h-[120px] mb-4"
+                className="min-h-[120px] mb-4 bg-background"
               />
             </TabsContent>
 
             <TabsContent value="preview">
-              <div className="min-h-[120px] mb-4 p-3 border rounded-md">
+              <div className="min-h-[120px] mb-4 p-3 border rounded-md bg-background text-card-foreground">
                 {content || "Preview will appear here"}
               </div>
             </TabsContent>
@@ -77,7 +77,7 @@ const PostCreator = ({
 
             <Button
               onClick={handleSubmit}
-              className="bg-emerald-800 hover:bg-emerald-700"
+              className="bg-primary hover:bg-primary/90"
             >
               <Send className="h-4 w-4 mr-2" />
               Share
