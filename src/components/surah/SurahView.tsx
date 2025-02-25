@@ -78,14 +78,15 @@ const SurahView = ({ surahNumber, translation }: SurahViewProps) => {
             <span className="font-mono text-sm text-muted-foreground">
               {verse.number}
             </span>
-            <p
-              className="text-2xl leading-relaxed text-right font-arabic"
-              dir="rtl"
-            >
+            <p className="arabic-text-3xl text-right w-full" dir="rtl">
               {verse.text}
             </p>
           </div>
-          <p className="text-card-foreground pl-10">{verse.translation}</p>
+          <p
+            className={`text-card-foreground pl-10 ${translation === "bn" ? "bangla-text-lg" : ""}`}
+          >
+            {verse.translation}
+          </p>
         </div>
       ))}
     </div>

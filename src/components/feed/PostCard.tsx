@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { Card } from "@/components/ui/card";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -46,7 +47,7 @@ const PostCard = ({
       ? `${content.slice(0, MAX_LENGTH)}...`
       : content;
 
-  const handle = `@${username.toLowerCase().replace(/ /g, "_")}`;
+  const handle = username.toLowerCase().replace(/ /g, "_");
 
   const handleLike = async () => {
     if (isLikeLoading) return;
@@ -66,7 +67,10 @@ const PostCard = ({
     <>
       <Card className="w-full max-w-[700px] p-4 mb-4 bg-card">
         <div className="flex items-start justify-between">
-          <div className="flex items-center gap-3 group cursor-pointer">
+          <Link
+            to={`/profile/${handle}`}
+            className="flex items-center gap-3 group cursor-pointer"
+          >
             <Avatar className="h-10 w-10 transition-transform group-hover:scale-105">
               <AvatarImage src={avatarUrl} alt={username} />
               <AvatarFallback>{username[0]}</AvatarFallback>
@@ -76,10 +80,10 @@ const PostCard = ({
                 {username}
               </h3>
               <p className="text-sm text-muted-foreground group-hover:text-primary/80 transition-colors">
-                {handle}
+                @{handle}
               </p>
             </div>
-          </div>
+          </Link>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" size="icon">

@@ -4,6 +4,7 @@ import routes from "tempo-routes";
 import RootLayout from "./components/layout/RootLayout";
 import HomePage from "./components/home";
 import SurahPage from "./components/surah/SurahPage";
+import ProfilePage from "./components/profile/ProfilePage";
 
 function App() {
   return (
@@ -14,6 +15,8 @@ function App() {
           <Route element={<RootLayout />}>
             <Route index element={<HomePage />} />
             <Route path="/surah-sections" element={<SurahPage />} />
+            <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/profile/:username" element={<ProfilePage />} />
           </Route>
         </Routes>
 

@@ -8,13 +8,14 @@ import SurahList from "./SurahList";
 import SurahView from "./SurahView";
 
 const SurahPage = () => {
-  const [selectedSurah, setSelectedSurah] = useState<number | null>(null);
+  // Set initial surah to 1 (Al-Fatiha)
+  const [selectedSurah, setSelectedSurah] = useState<number>(1);
   const [translation, setTranslation] = useState<"en" | "bn">("en");
   const [sheetOpen, setSheetOpen] = useState(false);
 
   const handleSurahSelect = (number: number) => {
     setSelectedSurah(number);
-    setSheetOpen(false); // Close sheet after selection
+    setSheetOpen(false);
   };
 
   return (
@@ -54,26 +55,15 @@ const SurahPage = () => {
           >
             <TabsList className="grid w-full grid-cols-2">
               <TabsTrigger value="en">English</TabsTrigger>
-              <TabsTrigger value="bn">বাংলা</TabsTrigger>
+              <TabsTrigger value="bn" className="font-bangla">
+                বাংলা
+              </TabsTrigger>
             </TabsList>
           </Tabs>
         </div>
 
         <ScrollArea className="flex-1">
-          {selectedSurah ? (
-            <SurahView surahNumber={selectedSurah} translation={translation} />
-          ) : (
-            <div className="flex flex-col items-center justify-center h-full p-4 text-center">
-              <h2 className="text-2xl font-semibold text-primary mb-2">
-                Welcome to Quran Reader
-              </h2>
-              <p className="text-muted-foreground">
-                Select a Surah from the{" "}
-                {window.innerWidth >= 1024 ? "sidebar" : "menu"} to begin
-                reading
-              </p>
-            </div>
-          )}
+          <SurahView surahNumber={selectedSurah} translation={translation} />
         </ScrollArea>
       </main>
     </div>
