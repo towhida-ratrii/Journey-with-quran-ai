@@ -1,16 +1,17 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import type { UserProfile } from "./ProfilePage";
+import { mockDataService, type User } from "@/lib/mockData";
 
 interface ProfileHeaderProps {
-  profile: UserProfile;
+  profile: User;
 }
 
 const ProfileHeader = ({ profile }: ProfileHeaderProps) => {
   const handleFollow = () => {
-    // Implement follow/unfollow logic
-    console.log("Toggle follow");
+    const updatedUser = mockDataService.toggleFollow(profile.username);
+    // In a real app, you'd want to update the UI state here
+    console.log("Toggle follow", updatedUser);
   };
 
   return (
