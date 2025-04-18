@@ -143,3 +143,21 @@
 .arabic-text-3xl {
   @apply font-arabic text-[2rem] leading-[2.5];
 }
+
+/* Custom scrollbar styling */
+.dark ::-webkit-scrollbar {
+  width: 10px;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: hsl(222.2 84% 4.9%);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: hsl(217.2 32.6% 17.5%);
+  border-radius: 5px;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: hsl(217.2 32.6% 25%);
+}

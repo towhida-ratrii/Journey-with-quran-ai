@@ -1,6 +1,14 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { Home, Calendar, Trophy, Book, BookOpen, User } from "lucide-react";
+import {
+  Home,
+  Calendar,
+  Trophy,
+  Book,
+  BookOpen,
+  User,
+  BookText,
+} from "lucide-react";
 import { ThemeSwitcher } from "../ThemeSwitcher";
 
 const navItems = [
@@ -9,6 +17,7 @@ const navItems = [
   { icon: Trophy, label: "Competitions", path: "/competitions" },
   { icon: Book, label: "Books", path: "/books" },
   { icon: BookOpen, label: "Surah Sections", path: "/surah-sections" },
+  { icon: BookText, label: "Hadiths", path: "/hadith" },
 ];
 
 const Sidebar = () => {
